@@ -1,9 +1,9 @@
-package com.example.messages.services;
+package com.example.services;
 
-import com.example.messages.dataAccess.IMessageRepository;
-import com.example.messages.dataAccess.IPersonRepository;
-import com.example.messages.model.Message;
-import com.example.messages.model.Person;
+import com.example.dataAccess.IMessageRepository;
+import com.example.dataAccess.IPersonRepository;
+import com.example.model.Message;
+import com.example.model.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,5 +42,18 @@ public class MessageService {
     public Iterable<Message> getMessageBySender(String name)  {
         Person sender = personRepository.findPersonByName(name);
         return messageRepo.findMessagesBySender(sender);
+    }
+
+    public Message saveMessage(Message savedMessage) {
+        Person sender = personRepository.findPersonByName(savedMessage.getSender().getName());
+        if(sender == null) {
+            Person messageSender = new Person(savedMessage.getSender().getName());
+            personRepository.save(messageSender);
+            savedMessage.setSender(messageSender);
+        }
+        else{
+            savedMessage.setSender(sender);
+        }
+        return messageRepo.save(savedMessage);
     }
 }

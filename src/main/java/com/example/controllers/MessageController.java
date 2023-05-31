@@ -1,12 +1,15 @@
-package com.example.messages.controllers;
+package com.example.controllers;
 
-import com.example.messages.model.Message;
-import com.example.messages.services.MessageService;
+import com.example.model.Message;
+import com.example.services.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
+import java.net.URISyntaxException;
+
+@CrossOrigin
 @RestController
 public class MessageController {
 
@@ -25,7 +28,7 @@ public class MessageController {
     }
 
     @GetMapping("/messages/{id}")
-    public Message getMessagebyId(@PathVariable Long id)  {
+    public Message getMessageById(@PathVariable Long id)  {
        Message m = messageService.getMessageById(id);
        return m;
     }
@@ -33,6 +36,12 @@ public class MessageController {
     @GetMapping("/bySender/{name}")
     public Iterable<Message> getMessagesBySender(@PathVariable String name) {
         return messageService.getMessageBySender(name);
+    }
+
+    @PostMapping("/")
+    public ResponseEntity createMessage(@RequestBody Message message) throws URISyntaxException {
+        Message savedMessage = messageService.saveMessage(message);
+        return ResponseEntity.created(new URI("/messages/" +savedMessage.getId())).body((savedMessage));
     }
 
     @Autowired

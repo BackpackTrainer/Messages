@@ -1,7 +1,8 @@
-package com.example.messages.controllerTests;
+package com.example.controllerTests;
 
-import com.example.messages.controllers.MessageController;
-import com.example.messages.services.MessageService;
+
+import com.example.controllers.MessageController;
+import com.example.services.MessageService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;

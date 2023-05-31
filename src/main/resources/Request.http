@@ -1,0 +1,19 @@
+http://localhost:8080/message
+###
+
+http://localhost:8080/messages
+####
+
+http://localhost:8080/messages/2
+####
+
+http://localhost:8080/bySender/Will
+###
+
+POST http://localhost:8080/
+Content-Type: application/json
+
+{
+    "messageContent":"Yet Again!",
+    "sender":"Will"
+}

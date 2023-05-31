@@ -1,4 +1,4 @@
-package com.example.messages;
+package com.example;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

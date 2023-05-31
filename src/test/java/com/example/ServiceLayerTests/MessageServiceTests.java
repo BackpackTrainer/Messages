@@ -1,8 +1,8 @@
-package com.example.messages.ServiceLayerTests;
+package com.example.ServiceLayerTests;
 
-import com.example.messages.dataAccess.IMessageRepository;
-import com.example.messages.model.Message;
-import com.example.messages.services.MessageService;
+import com.example.dataAccess.IMessageRepository;
+import com.example.model.Message;
+import com.example.services.MessageService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

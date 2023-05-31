@@ -1,9 +1,9 @@
-package com.example.messages;
+package com.example;
 
-import com.example.messages.dataAccess.IMessageRepository;
-import com.example.messages.dataAccess.IPersonRepository;
-import com.example.messages.model.Message;
-import com.example.messages.model.Person;
+import com.example.dataAccess.IMessageRepository;
+import com.example.dataAccess.IPersonRepository;
+import com.example.model.Message;
+import com.example.model.Person;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
