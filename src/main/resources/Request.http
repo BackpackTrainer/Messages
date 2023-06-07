@@ -20,3 +20,12 @@ Content-Type: application/json
       "name" : "Bryan"
     }
 }
+###
+
+POST http://localhost:8080/addperson
+Content-Type: application/json
+
+{
+  "name" : "Dimmy",
+  "email" : "her@there"
+}

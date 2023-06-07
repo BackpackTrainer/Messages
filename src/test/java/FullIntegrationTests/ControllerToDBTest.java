@@ -93,7 +93,7 @@ public class ControllerToDBTest {
                                     "\"email\" : \"you@there\","+
                                     "\"name\" : \"Churina\" }}")
                                 .accept("application/json"))
-                .andExpect(MockMvcResultMatchers.status().isCreated());
+                .andExpect(MockMvcResultMatchers.status().isOk());
 
         MvcResult result = resultActions.andReturn();
         String contentAsString = result.getResponse().getContentAsString();

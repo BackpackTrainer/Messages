@@ -37,13 +37,16 @@ public class MessageController {
         return messageService.getMessageBySender(name);
     }
 
-    @PostMapping("/addMessage")
-    public ResponseEntity createMessage(@RequestBody Message message) throws URISyntaxException {
-        Message savedMessage = messageService.saveMessage(message);
-//        return ResponseEntity.created(new URI("/messages/" +savedMessage.getId())).body((savedMessage));
-        return ResponseEntity.created(new URI("/addMessage/")).body((savedMessage));
-    }
+//    @PostMapping("/addMessage")
+//    public ResponseEntity createMessage(@RequestBody Message message) throws URISyntaxException {
+//        Message savedMessage = messageService.saveMessage(message);
+//        return ResponseEntity.created(new URI("/addMessage/")).body((savedMessage));
+//    }
 
+    @PostMapping("/addMessage")
+    public Message createMessage(@RequestBody Message message) throws URISyntaxException {
+      return messageService.saveMessage(message);
+    }
     @Autowired
     public void setMessageService(IMessageService messageService) {
         this.messageService = messageService;
