@@ -11,5 +11,4 @@ public interface IMessageRepository  extends CrudRepository<Message, Long> {
 
     Iterable<Message> findMessagesBySender(Person sender);
 
-
 }

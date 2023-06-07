@@ -3,7 +3,6 @@ import javax.persistence.*;
 
 @Entity
 public class Message {
-
     @Id
     @GeneratedValue
     private long id;

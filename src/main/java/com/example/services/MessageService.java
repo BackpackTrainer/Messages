@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MessageService {
+public class MessageService implements IMessageService {
 
     IMessageRepository messageRepo;
     IPersonRepository personRepository;
@@ -47,13 +47,11 @@ public class MessageService {
     public Message saveMessage(Message savedMessage) {
         Person sender = personRepository.findPersonByName(savedMessage.getSender().getName());
         if(sender == null) {
-            Person messageSender = new Person(savedMessage.getSender().getName());
-            personRepository.save(messageSender);
-            savedMessage.setSender(messageSender);
+            sender= new Person(savedMessage.getSender().getName(), savedMessage.getSender().getEmail());
+            sender = personRepository.save(sender);
         }
-        else{
-            savedMessage.setSender(sender);
-        }
+
+        savedMessage.setSender(sender);
         return messageRepo.save(savedMessage);
     }
 }

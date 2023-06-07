@@ -15,18 +15,18 @@ public class MessagesApplication {
         SpringApplication.run(MessagesApplication.class, args);
     }
 
-        @Bean
-        public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
-            return args -> {
-
-                System.out.println("\nWhat beans does Spring create when we start the app?  These:");
-
-                String[] beanNames = ctx.getBeanDefinitionNames();
-                Arrays.sort(beanNames);
-                for (String beanName : beanNames) {
-                    System.out.println(beanName);
-                }
-                System.out.println("\nSpring created " + beanNames.length + " beans");
-            };
-        }
+//        @Bean
+//        public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
+//            return args -> {
+//
+//                System.out.println("\nWhat beans does Spring create when we start the app?  These:");
+//
+//                String[] beanNames = ctx.getBeanDefinitionNames();
+//                Arrays.sort(beanNames);
+//                for (String beanName : beanNames) {
+//                    System.out.println(beanName);
+//                }
+//                System.out.println("\nSpring created " + beanNames.length + " beans");
+//            };
+//        }
 }

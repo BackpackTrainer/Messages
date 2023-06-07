@@ -10,10 +10,13 @@ http://localhost:8080/messages/2
 http://localhost:8080/bySender/Will
 ###
 
-POST http://localhost:8080/
+POST http://localhost:8080/addMessage
 Content-Type: application/json
 
 {
-    "messageContent":"Yet Again!",
-    "sender":"Will"
+    "messageContent":"Bryan's Song 3",
+    "sender": {
+      "email" : "me@here",
+      "name" : "Bryan"
+    }
 }

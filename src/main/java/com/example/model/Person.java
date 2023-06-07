@@ -30,6 +30,11 @@ public class Person {
         this.name = name;
     }
 
+    public Person(String name, String email) {
+        this.name = name;
+        this.email = email;
+    }
+
     public long getId() {
         return id;
     }

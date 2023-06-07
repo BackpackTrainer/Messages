@@ -1,6 +1,7 @@
 package com.example.controllers;
 
 import com.example.model.Message;
+import com.example.services.IMessageService;
 import com.example.services.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,17 +14,15 @@ import java.net.URISyntaxException;
 @RestController
 public class MessageController {
 
-    MessageService messageService;
+    IMessageService messageService;
 
     @GetMapping("/message")
     public String respond()  {
-
         return messageService.receivedMessage();
     }
 
     @GetMapping("/messages")
     public Iterable<Message> getAllMessages()  {
-
         return messageService.findAll();
     }
 
@@ -38,15 +37,14 @@ public class MessageController {
         return messageService.getMessageBySender(name);
     }
 
-    @PostMapping("/")
+    @PostMapping("/addMessage")
     public ResponseEntity createMessage(@RequestBody Message message) throws URISyntaxException {
         Message savedMessage = messageService.saveMessage(message);
         return ResponseEntity.created(new URI("/messages/" +savedMessage.getId())).body((savedMessage));
     }
 
     @Autowired
-    public void setMessageService(MessageService messageService) {
+    public void setMessageService(IMessageService messageService) {
         this.messageService = messageService;
     }
-
 }
