@@ -40,7 +40,8 @@ public class MessageController {
     @PostMapping("/addMessage")
     public ResponseEntity createMessage(@RequestBody Message message) throws URISyntaxException {
         Message savedMessage = messageService.saveMessage(message);
-        return ResponseEntity.created(new URI("/messages/" +savedMessage.getId())).body((savedMessage));
+//        return ResponseEntity.created(new URI("/messages/" +savedMessage.getId())).body((savedMessage));
+        return ResponseEntity.created(new URI("/addMessage/")).body((savedMessage));
     }
 
     @Autowired
